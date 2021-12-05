@@ -1,5 +1,5 @@
-# sudo docker build -t ebof .
-# sudo docker run -d -p 1024:1024 --rm -it ebof
+# docker build -t easy_bof .
+# docker run -p 1024:1024 --rm -it easy_bof
 FROM ubuntu:20.04
 
 RUN apt-get update
