@@ -1,6 +1,6 @@
-# Dyno-saurus
+# baby bof
 
-This folder contains the dyno-saurus reversing challenge.
+This folder contains the easy_bof pwn challenge.
 
 # Flag(s) 
 `DDC{Smashing_The_Stack_For_Fun_And_Profit}`
