@@ -1,27 +1,26 @@
-# baby heap
+# baby bof
 
-This folder contains the easy_heap pwn challenge.
+This folder contains the easy_bof pwn challenge.
 
 # Flag(s) 
-`DDC{Probably_tchache_poisoning_ez_pz}`
+`DDC{Smashing_The_Stack_For_Fun_And_Profit}`
 
 # Domain name (OR) Link to challenge on nextcloud
-`coolchallenge.hkn`
+`babyheap.hkn:1024`
 
 # Description(s) (THIS IS WHAT THE USER WILL SEE, YOU CAN USE MARKDOWN HERE)
 1. baby_heap
-- Proposed difficulty: medium
-- baby's first dynamic allocator magic
+- Proposed difficulty: hard
+- Stack exploits are out of fashion, let's be honest, the future is dynamic memory.
 
 # Prerequisites and Outcome
 
 Prerequisites
-- Knowledge about dynamic memory allocations (UAF)
-- Knowledge about heap exploitation
-- Probably also knowledge about libc 2.31 ptmalloc2's tcache functioning
+- Knowledge about libc's dynamic memory allocator
+- Knowledge about networking and communicating with a remote server
 
 Outcome
-- This will most likely be a refresher or an introduction to heap exploitation
+- This will teach tchache poisoning
 
 # Solutions (FULL WRITEUP FOR EACH FLAG.)
 The user is presented with a menu allowing for 4 options.
