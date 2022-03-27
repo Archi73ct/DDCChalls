@@ -17,7 +17,7 @@ COPY ynetd .
 COPY r2c.c .
 RUN chmod +x ynetd
 
-RUN gcc r2c.c -o r2c -fno-stack-protector
+RUN gcc r2c.c -o r2c -fno-stack-protector -no-pie
 
 USER ctf
 EXPOSE 1024

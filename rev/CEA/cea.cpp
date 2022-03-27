@@ -24,6 +24,29 @@ unsigned int sb(unsigned int c) {
     return s1 | (s2<<8) | (s3<<16) | (s4<<24);
 }
 
+int decrypt(char * inp, unsigned int len) {
+    if (len < 8) {
+        return -1;
+    }
+    if (len % 8 != 0) {
+        return -1;
+    }
+    for (int i = 0; i < len; i +=8) {
+        unsigned long *t = (unsigned long*)(inp+i);
+        unsigned long r = sb(((*t<<32) ^ (k & 0xffffffff00000000))>>32)<<32;
+        unsigned long l = sb((*t & 0xffffffff) ^ (k & 0xffffffff));
+
+
+
+        //unsigned long m = (((*t&0xffffffff)<<32)^(k & 0xffffffff00000000)) | ((*t>>32) ^ (k & 0xffffffff));
+        //unsigned long r = sb((m & 0xffffffff));
+        //unsigned long l = sb((m >> 32));
+        *t = l<<32 | r;
+        
+    }
+    return 0;
+}
+
 int encrypt(char * inp, unsigned int len) {
     if (len < 8) {
         return -1;
@@ -37,5 +60,18 @@ int encrypt(char * inp, unsigned int len) {
         unsigned long l = sb((*t >> 32));
         *t = ((r<<32)^(k & 0xffffffff00000000)) | (l ^ (k & 0xffffffff));
     }
+    return 0;
+}
+
+
+int main() {
+    char *t = "DDC{Sure_Thats_The_GOST_SBOXXXX}";
+    char *v = (char *)malloc(100);
+    strcpy(v, t);
+    printf("BEFORE: %s\n", v);
+    encrypt(v, 32);
+    printf("AFTER: %s", v);
+    decrypt(v, 32);
+    printf("DEC: %s", v);
     return 0;
 }
