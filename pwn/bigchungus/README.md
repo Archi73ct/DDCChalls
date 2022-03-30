@@ -8,10 +8,15 @@ This is a heap exploitation challenge based on the `House of force` technique.
 
 # Domain name (OR) Link to challenge on nextcloud
 `chungus.hkn`
+https://nextcloud.ntp-event.dk:8443/s/bWMq4Ri6DH2GexJ/download/Hobc.zip
 
 # Description(s) (THIS IS WHAT THE USER WILL SEE, YOU CAN USE MARKDOWN HERE))
 ZanderDK once said "I wish we could use the big chungus here",
 I still have no clue what he meant.
+
+https://nextcloud.ntp-event.dk:8443/s/bWMq4Ri6DH2GexJ/download/Hobc.zip
+
+`nc chungus.hkn 1024`
 
 # Prerequisites and Outcome
 
