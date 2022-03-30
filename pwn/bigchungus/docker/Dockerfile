@@ -12,6 +12,7 @@ COPY flag .
 COPY ynetd .
 
 RUN chmod +x ynetd
+#RUN chmod +x hobc
 
 RUN chown -R root:root /home/ctf
 RUN gcc  -no-pie -Wl,-z,norelro hobc.c -o hobc

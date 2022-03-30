@@ -12,7 +12,6 @@ void setup() {
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
 }
-
 typedef struct _ppm {
     char magic[2];
     ssize_t width;
@@ -68,7 +67,7 @@ void read_max_val(ppm* image) {
         c = getchar();
         if (c == '\n' || c == EOF) break;
         line[i++] = c & 0xff;
-    } while (i < MAXLINE-1);
+    } while (i < MAXLINE-1 && c != 0);
     int r = sscanf(line, "%lld", &mval);
     if (r != 1) {
         printf("Could not read max value\n");
@@ -84,14 +83,14 @@ int main() {
     printf("Welcome to the image parser!\n");
     printf("Please send your ppm image:\n");
     ppm *image = malloc(sizeof(ppm));
-    printf("Almost forgot, free leak %p\n", image);
+    printf("Oh no my pointers are leaky %p %p\n", image, malloc);
     // read the header
     parse_magic(image);
     // read size
     read_size(image);
     // read max val for RGB stuff 
     read_max_val(image);
-
+    printf("Maxval %d\n", image->maxval);
     char* data;
     memset(line, 0, MAXLINE);
     if (image->size > MAX_IMG_SIZE) {
@@ -99,9 +98,9 @@ int main() {
     } else {
         data = (char*)malloc(image->size+1);
     }
-    int i = 0;
+    unsigned int i = 0;
     int c = 0;
-    int cx = 0;
+    unsigned int cx = 0;
     int res = 0;
     do {
         c = getchar();
@@ -115,12 +114,12 @@ int main() {
         }
         line[i++] = c & 0xff;
 
-    } while (c != EOF && i < MAXLINE-1);
+    } while (c != EOF && i < MAXLINE-1 && c != 0 && cx < (size_t)image->size);
     // Trim size in case of miscalculation
     image->size = cx;
 
     // Count the bytes
-    printf("Maxval %d\n", image->maxval);
+
     malloc(image->maxval);
 
     // print info
@@ -131,4 +130,5 @@ int main() {
     for (int i = 0; i < 255; i++) {
         printf("%d:\t%d", i, y[i]);
     }
+    free(y);
 }
