@@ -84,7 +84,7 @@ int main() {
     printf("Welcome to the image parser!\n");
     printf("Please send your ppm image:\n");
     ppm *image = malloc(sizeof(ppm));
-    printf("Almost forgot, free leak %p\n", malloc);
+    printf("Almost forgot, free leak %p\n", image);
     // read the header
     parse_magic(image);
     // read size
