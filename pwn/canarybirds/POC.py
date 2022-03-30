@@ -11,7 +11,7 @@ c
 """
 # Found with gef patterns
 canary_offset = 264
-get_flag_offset = 0x0000000000401236
+get_flag_offset = 0x0000000000401316
 
 # Ignore some input
 p.readuntil("?\n")
