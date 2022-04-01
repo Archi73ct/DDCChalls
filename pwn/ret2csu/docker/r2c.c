@@ -10,4 +10,7 @@ int main() {
 __attribute__((constructor))
 void myconstructor() {
     printf("Welcome to the challenge\n");
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
 }
