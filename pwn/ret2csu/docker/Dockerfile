@@ -11,14 +11,14 @@ WORKDIR /home/ctf
 
 RUN chown -R root:root /home/ctf
 
-COPY r2c.c .
+COPY r2c .
 COPY flag .
 COPY ynetd .
 
-#RUN chmod +x r2c
+RUN chmod +x r2c
 RUN chmod +x ynetd
 
-RUN gcc r2c.c -o r2c -fno-stack-protector -no-pie
+#RUN gcc r2c.c -o r2c -fno-stack-protector -no-pie
 
 USER ctf
 EXPOSE 1024

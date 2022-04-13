@@ -14,12 +14,12 @@ libc = ELF("./libc.so.6")
 def _u64(b):
     return u64(b.ljust(8, b'\x00'))
 
-p = process("./r2c_patched")
-#p = remote("localhost", 1024) 
-gdb.attach(p, '''
-b *0x0000000000400550
-c
-''')
+#p = process("./r2c_patched")
+p = remote("localhost", 1024) 
+#gdb.attach(p, '''
+#b *0x0000000000400550
+#c
+#''')
 input('wait')
 
 p.recvline()
